@@ -19,14 +19,11 @@ const storage = multer.diskStorage({
 })
 
 const upload = multer({ storage: storage })
-
 const apiController = require('../controllers/apiController.js')
-
 router.post('/get-pools-list', async (req, res) => {
   const response = await apiController.getPoolsList()
   return res.send(response)
 })
-
 router.post('/get-mypools', async (req, res) => {
   var account = req.body.account;
   const response = await apiController.getMyPools(account)
@@ -47,10 +44,9 @@ router.post('/exists-pool', async (req, res) => {
   return res.send(response)
 })
 router.post('/verify-user', async (req, res) => {
-    const response = await apiController.createOwner(req.body)
+    const response = await apiController.createToken(req.body)
     return res.send(response)
 })
-
 router.post('/upload-image', upload.single('file'),  async (req, res) => {
   if(!req.file){
     return res.send({id:'0.png'})
@@ -59,9 +55,7 @@ router.post('/upload-image', upload.single('file'),  async (req, res) => {
     return res.send({id:req.file.filename})
   }
 })
-  
 router.all('/*', async (req, res) => {
   return res.send({ error: 404, result: { msg: '404' } })
 })
-
 module.exports = router

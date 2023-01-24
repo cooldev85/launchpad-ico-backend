@@ -19,7 +19,7 @@ process.on('uncaughtException', function (err) {
 	// console.log(err);
 });
 process.on('uncaughtExceptionMonitor', (err, origin) => {
-	console.log(err)	
+	console.log(err)
 });
 
 // app.get('/*', function (req, res) {
@@ -32,7 +32,7 @@ process.on('uncaughtExceptionMonitor', (err, origin) => {
 
 const mongourl = require("./config/config").mongoURI;
 
-mongoose.connect(mongourl, {useUnifiedTopology: true,useNewUrlParser: true,}).then(() => {
+mongoose.connect(mongourl, { useUnifiedTopology: true, useNewUrlParser: true, }).then(() => {
 	console.log("MongoDB Connected")
 	const port = require("./config/config").port;
 	app.listen(port, () => console.log(`Launchpad Server running on port ${port}`));
