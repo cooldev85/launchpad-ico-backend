@@ -38,13 +38,34 @@ router.post('/create-pool', async (req, res) => {
     const response = await apiController.createPool(req.body)
     return res.send(response)
 })
+router.post('/create-simpletoken', async (req, res) => {
+  const response = await apiController.createSimpleToken(req.body)
+  return res.send(response)
+})
+router.post('/create-standardtoken', async (req, res) => {
+  const response = await apiController.createStandardToken(req.body)
+  return res.send(response)
+})
+router.post('/create-reflectiontoken', async(req, res) => {
+  const response = await apiController.createReflectiontoken(req.body)
+  return res.send(response)
+})
+router.post('/create-devidendtoken', async(req, res) =>{
+  const response = await apiController.createReflectiontoken(req.body)
+  return res.send(response)
+})
 router.post('/exists-pool', async (req, res) => {
   var address =req.body.token;
   const response = await apiController.existPool(address)
   return res.send(response)
 })
-router.post('/verify-user', async (req, res) => {
-    const response = await apiController.createToken(req.body)
+router.post('/create-tokenlock', async(req, res) => {
+  const response = await apiController.createTokenLock(req.body)
+  return res.send(response)
+})
+router.post('/')
+router.post('/approve-token', async (req, res) => {
+    const response = await apiController.ApproveToken(req.body)
     return res.send(response)
 })
 router.post('/upload-image', upload.single('file'),  async (req, res) => {
