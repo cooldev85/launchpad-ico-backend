@@ -1,7 +1,6 @@
 require('dotenv').config()
 
 const { EasyModal } = require('../models/EasyStarter')
-const { OwnerModal } = require('../models/Owners')
 const config = require('../config/config')
 const fs = require('fs');
 
@@ -39,13 +38,42 @@ getPoolInfo = async (id) => {
 	}
 }
 
-createToken = async (props) => {
+createSimpleToken = async (props) => {
 	try {
-		const instance = new OwnerModal(props)
+		const instance = new SimpleTokenInfo(props)
 		var res = await instance.save()
 		return { err: 0, msg: 'success', result: res }
 	} catch (ex) {
 		return { err: 1, msg: ex }
+	}
+}
+
+createStandardToken = async (props) => {
+	try {
+		const instance = new StandardTokenInfo(props)
+		var res = await instance.save()
+		return {err: 0, msg: 'success', result:res}
+	}catch (ex) {
+		return { err:1, msg: ex}
+	}
+}
+createReflectiontoken = async (props) => {
+	try {
+		const instance = new ReflectionTokenInfo(props)
+		var res = await instance.save()
+		return {err: 0, msg: "success", result:res}
+	} catch (ex) {
+		return { err:1, msg:ex}
+	}
+}
+
+createDevidedToken = async (props) => {
+	try {
+		const instance = new DevidendTokenInfo(props)
+		var res = await instance.save()
+		return {err:0, msg:"success", result:res}
+	} catch (ex) {
+		return {err: 1, msg:ex}
 	}
 }
 ApproveToken = async (address) => {
@@ -110,7 +138,10 @@ module.exports = {
 	getPoolsList,
 	getPoolInfo,
 	getMyPools,
-	createToken,
+	createSimpleToken,
+	createStandardToken,
+	createReflectiontoken,
+	createDevidedToken,
 	createPool,
 	existPool,
 	setKYCVerified,
