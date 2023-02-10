@@ -12,17 +12,17 @@ const DevidendToken = new Schema({
   Router:{type:String, default: ''},
   BaseToken: {type:String, default: ''},
   marketingWallet: {type:String, default: ''},
-  sellLiquidityFee: {type:Float64Array, default: ''},
-  sellMarketingFee: {type:Float64Array, default: ''},
-  buyLiquidityFee:{type:Float64Array, default: ''},
-  BuyMarketingFee:{type:Float64Array, default: ''},
+  sellLiquidityFee: {type:Number, default: ''},
+  sellMarketingFee: {type: Number, default: ''},
+  buyLiquidityFee:{type:Number, default: ''},
+  BuyMarketingFee:{type: Number, default: ''},
   insteadMarketingFee:{type:Number, default: ''},
   reflectionTokenAddress:{type:String, default:''},
   minimumTokenBalance:{type:Number, default: ''},
-  sellRewardFee: {type:Float64Array, default: ''},
-  buyRewardFee: {type:Float64Array, default: ''},
+  sellRewardFee: {type:Number, default: ''},
+  buyRewardFee: {type:Number, default: ''},
   implementAntiBot: {type:Number, default:''},
 })
 
-const OwnerModal = mongoose.model('Ownerdata', DevidendToken)
-module.exports = { OwnerModal }
+const DevidendTokenModal = mongoose.model('DevidendTokenData', DevidendToken)
+module.exports = { DevidendTokenModal }

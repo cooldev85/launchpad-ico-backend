@@ -12,13 +12,13 @@ const StandardToken = new Schema({
   Router:{type:String, default: ''},
   BaseToken: {type:String, default: ''},
   marketingWallet: {type:String, default: ''},
-  sellLiquidityFee: {type:Float64Array, default: ''},
-  sellMarketingFee: {type:Float64Array, default: ''},
-  buyLiquidityFee:{type:Float64Array, default: ''},
-  buyMarketingFee:{type:Float64Array, default: ""},
+  sellLiquidityFee: {type:Number, default: ''},
+  sellMarketingFee: {type:Number, default: ''},
+  buyLiquidityFee:{type:Number, default: ''},
+  buyMarketingFee:{type:Number, default: ""},
   implementeAntiBot:{type:Number, default:''},
   
 })
 
-const OwnerModal = mongoose.model('Ownerdata', StandardToken)
-module.exports = { OwnerModal }
+const StandardTokenModal = mongoose.model('StandardTokenData', StandardToken)
+module.exports = { StandardTokenModal }

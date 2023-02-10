@@ -9,5 +9,5 @@ const SimpleToken = new Schema({
   totalSupply: {type:String, default: ''},
 })
 
-const OwnerModal = mongoose.model('Ownerdata', SimpleToken)
-module.exports = { OwnerModal }
+const SimpleTokenModal = mongoose.model('SimpleTokenData', SimpleToken)
+module.exports = { SimpleTokenModal }

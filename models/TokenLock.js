@@ -7,5 +7,5 @@ const TokenLockInfo = new Schema({
   lockDate:{ type:Date, default: ''}
 })
 
-const OwnerModal = mongoose.model('Ownerdata', TokenLockInfo)
-module.exports = { OwnerModal }
+const TokenLockModal = mongoose.model('TokenLockData', TokenLockInfo)
+module.exports = { TokenLockModal }

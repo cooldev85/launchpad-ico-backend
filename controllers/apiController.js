@@ -1,11 +1,11 @@
 require('dotenv').config()
 
 const { EasyModal } = require('../models/EasyStarter')
-const {TokenLock} = require('../models/TokenLock')
-const {DevidendToken} = require('../models/DevidendTokenInfo')
-const {SimpleToken} = require('../models/SimpleTokenInfo')
-const {StandardToken} = require('../models/StandardTokenInfo')
-const {ReflectionToken} = require('../models/ReflectionTokenInfo')
+const {TokenLockModal} = require('../models/TokenLock')
+const {DevidendTokenModal} = require('../models/DevidendTokenInfo')
+const {SimpleTokenModal} = require('../models/SimpleTokenInfo')
+const {StandardTokenModal} = require('../models/StandardTokenInfo')
+const {ReflectionTokenModal} = require('../models/ReflectionTokenInfo')
 const config = require('../config/config')
 const fs = require('fs');
 
@@ -45,7 +45,7 @@ getPoolInfo = async (id) => {
 
 createSimpleToken = async (props) => {
 	try {
-		var rows = await SimpleToken.find({ tokenAddress: props?.tokenAddress, state: 10 })
+		var rows = await SimpleTokenModal.find({ tokenAddress: props?.tokenAddress, state: 10 })
 		if (rows.length > 0) return { error: 2, msg: 'already exists' }
 		const instance = new SimpleTokenInfo(props)
 		var res = await instance.save()
@@ -57,7 +57,7 @@ createSimpleToken = async (props) => {
 
 createStandardToken = async (props) => {
 	try {
-		var rows = await StandardToken.find({ tokenAddress: props?.tokenAddress, state: 10 })
+		var rows = await StandardTokenModal.find({ tokenAddress: props?.tokenAddress, state: 10 })
 		if (rows.length > 0) return { error: 2, msg: 'already exists' }
 		const instance = new StandardTokenInfo(props)
 		var res = await instance.save()
@@ -69,7 +69,7 @@ createStandardToken = async (props) => {
 
 createReflectiontoken = async (props) => {
 	try {
-		var rows = await ReflectionToken.find({ tokenAddress: props?.tokenAddress, state: 10 })
+		var rows = await ReflectionTokenModal.find({ tokenAddress: props?.tokenAddress, state: 10 })
 		if (rows.length > 0) return { error: 2, msg: 'already exists' }
 		const instance = new ReflectionTokenInfo(props)
 		var res = await instance.save()
@@ -79,9 +79,9 @@ createReflectiontoken = async (props) => {
 	}
 }
 
-createDevidedToken = async (props) => {
+createDevidendToken = async (props) => {
 	try {
-		var rows = await DevidendToken.find({ tokenAddress: props?.tokenAddress, state: 10 })
+		var rows = await DevidendTokenModal.find({ tokenAddress: props?.tokenAddress, state: 10 })
 		if (rows.length > 0) return { error: 2, msg: 'already exists' }
 		const instance = new DevidendTokenInfo(props)
 		var res = await instance.save()
@@ -93,7 +93,7 @@ createDevidedToken = async (props) => {
 
 createTokenLock = async(props) => {
 	try {
-		var rows = await TokenLock.find({ tokenAddress: props?.tokenAddress, state: 10 })
+		var rows = await TokenLockModal.find({ tokenAddress: props?.tokenAddress, state: 10 })
 		if (rows.length > 0) return { error: 2, msg: 'already exists' }
 		const instance = new TokenLockInfo(props)
 		var res = await instance.save()
@@ -170,7 +170,7 @@ module.exports = {
 	createSimpleToken,
 	createStandardToken,
 	createReflectiontoken,
-	createDevidedToken,
+	createDevidendToken,
 	createPool,
 	existPool,
 	setKYCVerified,

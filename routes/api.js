@@ -63,7 +63,6 @@ router.post('/create-tokenlock', async(req, res) => {
   const response = await apiController.createTokenLock(req.body)
   return res.send(response)
 })
-router.post('/')
 router.post('/approve-token', async (req, res) => {
     const response = await apiController.ApproveToken(req.body)
     return res.send(response)
